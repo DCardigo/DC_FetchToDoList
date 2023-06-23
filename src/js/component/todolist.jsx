@@ -55,13 +55,18 @@ const Todo = () => {
         <div className="justify-content-center">
 
             <h1 className="text-center mt-5">ToDoList</h1>
-            <ul className="list-group d-flex col-3 shadow-lg mb-5 bg-body rounded">
-                
-                <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey}/>
+            
+            <div className="d-flex justify-content-center"> 
+            
+                <ul className="list-group d-flex col-3 mt-5 shadow-lg mb-5 bg-body rounded">
+                    
+                    <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey}/>
 
-                {newList}
-               
-            </ul>
+                    {newList}
+                
+                </ul>
+
+            </div>
         
         </div>
     )

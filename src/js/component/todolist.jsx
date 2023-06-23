@@ -6,11 +6,9 @@ const Todo = () => {
     // ESTADOS
 
     const [tarea,setTarea] = useState("");
-    // console.log(tarea)
-
     const [lista,setLista] = useState([]);
 
-    // console.log(lista);
+
 
     // FUNCIÓN KEYDOWN
 
@@ -19,8 +17,8 @@ const Todo = () => {
             handleLista()
             setTarea("")
         }
-
       };
+
 
     //   FUNCION LISTA
 
@@ -28,10 +26,29 @@ const Todo = () => {
         setLista([...lista, tarea]);
      
       };
-    
-        // console.log(lista);
 
-    const newList = lista.map(function(tarea,i){return <li className="list-group-item" key = {i}>{tarea}</li>})
+    //   ELIMINAR ELEMENTO
+
+
+    // const removeItem = (id) => {
+    //     const updatedItems = lista.filter((tarea,id) => tarea.id !== id);
+    //     setLista(updatedItems);
+    //   };
+
+    // NUEVO ELEMENTO LISTA
+
+    const newList = lista.map(function(tarea,i){
+        
+        return <li className="list-group-item" key = {i}>
+            
+            {tarea}
+
+            <button type="button" onClick={removeItem} className="btn-close float-end" aria-label="Close"></button>
+            
+            
+            </li>})
+
+
 
     return (
 

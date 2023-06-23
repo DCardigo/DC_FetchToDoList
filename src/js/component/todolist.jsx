@@ -43,7 +43,7 @@ const Todo = () => {
             
             {tarea}
 
-            <button type="button" onClick={removeItem} className="btn-close float-end" aria-label="Close"></button>
+            <button type="button"  className="btn-close float-end" aria-label="Close"></button>
             
             
             </li>})

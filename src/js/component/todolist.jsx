@@ -7,7 +7,7 @@ const Todo = () => {
 
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
-    const [place,setPlace] = useState("")
+
     
 
 
@@ -37,9 +37,7 @@ const Todo = () => {
  
       };
 
- 
 
-    
 
     // NUEVO ELEMENTO LISTA
 
@@ -54,12 +52,6 @@ const Todo = () => {
                
             </li>)})
 
-
-
-    
-
-console.log(newList.length);
-  
     return (
 
         <div className="justify-content-center">

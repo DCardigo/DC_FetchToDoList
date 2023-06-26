@@ -44,11 +44,11 @@ const Todo = () => {
     const newList = lista.map(function(tarea,i){
 
         
-        return (<li className="list-group-item pt-3" id={i} key = {i}>
+        return (<li className="list-group-item px-2" id={i} key = {i}>
             
             {tarea}
 
-            <button  type="button" onClick={() => removeItem(tarea,i)} className="btn float-end" aria-label="Close">x</button>
+            <button  type="button" onClick={() => removeItem(tarea,i)} className="btn float-end px-2 py-0" aria-label="Close">x</button>
                
             </li>)})
 
@@ -60,15 +60,19 @@ const Todo = () => {
             
             <div className="d-flex justify-content-center"> 
             
-                <ul className="list-group d-flex col-4 mt-5 shadow-lg mb-5 bg-body rounded">
+                <ul className="list-group d-flex col-6 mt-5 shadow-lg mb-5 bg-body rounded">
 
                     <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>   
 
                     {newList}
 
-                    <li id ="aviso"className="list-group-item">{lista.length === 0 ? "" : 
-                                                     lista.length === 1 ?  "Queda " + lista.length + " tarea pendiente." : 
-                                                    "Quedan " + lista.length + " tareas pendientes."} 
+                    <li id ="aviso"className="list-group-item">{
+                    
+                    lista.length === 0 ? "" : 
+                    lista.length === 1 ?  lista.length + " tarea pendiente." : 
+                    lista.length + " tareas pendientes."} 
+
+
                     </li>
                 </ul>
 

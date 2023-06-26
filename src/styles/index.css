@@ -24,12 +24,17 @@ body {
 
     color: rgb(255, 255, 255);
     font-size: 20px;
+    padding-left: 10px;
 }
 
 li:hover .btn{
     color: black;
 
     
+}
+
+.list-group-item{
+    color: rgb(109, 109, 109);
 }
 
 #aviso{

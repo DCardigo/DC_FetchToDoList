@@ -7,7 +7,8 @@ const Todo = () => {
 
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
-    const [cerar,setCerrar] = useState(false);
+    const [place,setPlace] = useState("")
+    
 
 
 
@@ -30,36 +31,34 @@ const Todo = () => {
 
     //   ELIMINAR ELEMENTO
 
-
-
-
-    const removeItem = (e) => {
-        // const updatedItems = lista.filter(tarea => tarea.target.parentNode.id !== e.target.parentNode.id);
-        // // setLista(updatedItems);
-        // console.log(updatedItems);
-
-        // console.log(e.target.parentNode.id);
+    const removeItem = (tarea,i) => {
+        const updatedItems = lista.filter((item) => item != tarea);
+        setLista(updatedItems);
+ 
       };
+
+ 
+
     
 
     // NUEVO ELEMENTO LISTA
 
     const newList = lista.map(function(tarea,i){
+
         
-        return <li className="list-group-item" id={i} key = {i}>
+        return (<li className="list-group-item pt-3" id={i} key = {i}>
             
             {tarea}
 
-            <button type="button" onClick={removeItem} className="btn-close float-end" aria-label="Close"></button>
-            
-            
-            </li>})
-
-            console.log(lista[id]);
-            console.log(newList);
+            <button  type="button" onClick={() => removeItem(tarea,i)} className="btn float-end" aria-label="Close">x</button>
+               
+            </li>)})
 
 
 
+    
+
+console.log(newList.length);
   
     return (
 
@@ -68,13 +67,17 @@ const Todo = () => {
             <h1 className="text-center mt-5">ToDoList</h1>
             
             <div className="d-flex justify-content-center"> 
-
+            
                 <ul className="list-group d-flex col-4 mt-5 shadow-lg mb-5 bg-body rounded">
-                    
-                    <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey}/>
+
+                    <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>   
 
                     {newList}
-                
+
+                    <li className="list-group-item">{lista.length === 0 ? "" : 
+                                                     lista.length === 1 ?  "Queda " + lista.length + " tarea pendiente." : 
+                                                    "Quedan " + lista.length + " tareas pendientes."} 
+                    </li>
                 </ul>
 
             </div>

@@ -66,7 +66,7 @@ const Todo = () => {
 
                     {newList}
 
-                    <li className="list-group-item">{lista.length === 0 ? "" : 
+                    <li id ="aviso"className="list-group-item">{lista.length === 0 ? "" : 
                                                      lista.length === 1 ?  "Queda " + lista.length + " tarea pendiente." : 
                                                     "Quedan " + lista.length + " tareas pendientes."} 
                     </li>

@@ -1,3 +1,8 @@
+
+![Captura de pantalla 2023-06-26 a las 18 00 49](https://github.com/DCardigo/DC_toDoList/assets/123099651/627212fa-5094-4903-967b-87b55458e3b8)
+
+
+
 # Hello World with React boilerplate
 
 Start coding a react application

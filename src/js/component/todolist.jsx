@@ -10,7 +10,7 @@ const Todo = () => {
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
 
-actualizarLista();
+
         // FETCH
 
         // COMPROBAR LISTA
@@ -46,8 +46,15 @@ actualizarLista();
         };
 
 
-console.log(lista);
-console.log(tarea);
+// console.log(lista);
+// console.log(tarea);
+        // ELIMINAR TAREAS
+
+        const eliminarTareas = () => {
+            setLista([]);
+            actualizarLista();
+        }
+
 
          // ACTUALIZAR LISTA
 
@@ -68,11 +75,10 @@ console.log(tarea);
                 .then((response)=>response.json())
                 .then((data)=>console.log(data))
                 .catch((error)=>console.log(error))
-
         };
 
 
-
+       
     // FETCH
 
 
@@ -92,16 +98,16 @@ console.log(tarea);
 
     const handleLista = (e) => {
         setLista([...lista, tarea]);
-        // actualizarLista()
-
       };
+
+    actualizarLista();
 
     //   ELIMINAR ELEMENTO
 
     const removeItem = (tarea,i) => {
         const updatedItems = lista.filter((item) => item != tarea);
         setLista(updatedItems);
-        // actualizarLista()
+        
 
       };
 
@@ -151,7 +157,7 @@ console.log(tarea);
             </div>
 
             <button className="btn btn-primary" onClick={crearUsuario}>Nuevo Usuario</button>
-            {/* <button className="btn btn-success" onClick={actualizarLista}>Actualizar Lista</button> */}
+            <button className="btn btn-success" onClick={eliminarTareas}>Borrar Tareas</button>
             <button className="btn btn-warning" onClick={estadoLista}>Comprobar Lista</button>
 
         </div>

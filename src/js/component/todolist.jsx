@@ -44,31 +44,30 @@ const Todo = () => {
         };
 
         // ACTUALIZAR LISTA
-// console.log(lista);
-// const newToDo = (tarea) => {
+console.log(lista);
+console.log(tarea);
 
-//     return (
-//         {label:tarea, done: false}
-//     )
-// };
+        const newToDo = lista.map(function(tarea,i){
+
+        
+            return ({label:tarea, done: false})})
+
         function  actualizarLista(tarea) {
-                
+
                     fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
                     method:'PUT',
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(
-                        [
-                            { label: "tarea", done: false },
-                        ]
-                    )
+                    body: JSON.stringify(newToDo)
+                })
+
                 .then((response)=>response.json())
                 .then((data)=>console.log(data))
                 .catch((error)=>console.log(error))
 
-            })
-        };
+                    };
+        
 
 
     // FETCH

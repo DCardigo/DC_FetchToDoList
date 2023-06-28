@@ -3,12 +3,14 @@ import React, {useState} from "react";
 
 const Todo = () => {
 
+    
+
     // ESTADOS
 
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
 
-
+actualizarLista();
         // FETCH
 
         // COMPROBAR LISTA
@@ -18,7 +20,7 @@ const Todo = () => {
                 method:'GET',
                 headers: {
                     "Content-Type": "application/json",
-                },   
+                },
             })
             .then((response)=>response.json())
             .then((data)=>console.log(data))
@@ -26,7 +28,7 @@ const Todo = () => {
 
          };
 
-        // NUEVO USUARIO    
+        // NUEVO USUARIO
 
         function crearUsuario() {
                 fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
@@ -35,7 +37,7 @@ const Todo = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify([])
-                            
+
             })
             .then((response)=>response.json())
             .then((data)=>console.log(data))
@@ -43,16 +45,17 @@ const Todo = () => {
 
         };
 
-        // ACTUALIZAR LISTA
+
 console.log(lista);
 console.log(tarea);
 
-        const newToDo = lista.map(function(tarea,i){
+         // ACTUALIZAR LISTA
 
-        
-            return ({label:tarea, done: false})})
+        function  actualizarLista() {
 
-        function  actualizarLista(tarea) {
+            const newToDo = lista.map(function(tarea,i){
+
+                return ({label:tarea, done: false})})
 
                     fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
                     method:'PUT',
@@ -66,8 +69,8 @@ console.log(tarea);
                 .then((data)=>console.log(data))
                 .catch((error)=>console.log(error))
 
-                    };
-        
+        };
+
 
 
     // FETCH
@@ -78,7 +81,7 @@ console.log(tarea);
     // FUNCIÓN KEYDOWN
 
     const handleKey= (e) => {
-        if (e.key === 'Enter' && tarea != "") {
+        if (e.key === 'Enter' && tarea != " " && tarea != "") {
             handleLista()
             setTarea("")
         }
@@ -89,8 +92,8 @@ console.log(tarea);
 
     const handleLista = (e) => {
         setLista([...lista, tarea]);
-        actualizarLista()
-     
+        // actualizarLista()
+
       };
 
     //   ELIMINAR ELEMENTO
@@ -98,43 +101,48 @@ console.log(tarea);
     const removeItem = (tarea,i) => {
         const updatedItems = lista.filter((item) => item != tarea);
         setLista(updatedItems);
- 
-      };
+        // actualizarLista()
 
+      };
 
 
     // NUEVO ELEMENTO LISTA
 
     const newList = lista.map(function(tarea,i){
 
-        
+
         return (<li className="list-group-item px-2" id={i} key = {i}>
-            
+
             {tarea}
 
             <button  type="button" onClick={() => removeItem(tarea,i)} className="btn float-end px-2 py-0" aria-label="Close">x</button>
-               
+
             </li>)})
+
+
+
+
+
 
     return (
 
         <div className="justify-content-center">
 
             <h1 className="text-center mt-5">ToDoList</h1>
-            
-            <div className="d-flex justify-content-center"> 
-            
+
+            <div className="d-flex justify-content-center">
+
                 <ul className="list-group d-flex col-6 mt-5 shadow-lg mb-5 bg-body rounded">
 
-                    <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>   
+                    <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>
 
                     {newList}
 
                     <li id ="aviso"className="list-group-item">{
-                    
-                    lista.length === 0 ? "" : 
-                    lista.length === 1 ?  lista.length + " tarea pendiente." : 
-                    lista.length + " tareas pendientes."} 
+
+                    lista.length === 0 ? "" :
+                    lista.length === 1 ?  lista.length + " tarea pendiente." :
+                    lista.length + " tareas pendientes."}
 
 
                     </li>
@@ -145,10 +153,12 @@ console.log(tarea);
             <button className="btn btn-primary" onClick={crearUsuario}>Nuevo Usuario</button>
             {/* <button className="btn btn-success" onClick={actualizarLista}>Actualizar Lista</button> */}
             <button className="btn btn-warning" onClick={estadoLista}>Comprobar Lista</button>
-        
+
         </div>
     )
+   
 }
+
 
 
 export default Todo

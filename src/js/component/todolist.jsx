@@ -7,47 +7,68 @@ const Todo = () => {
 
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
-    
 
 
-    // FETCH
+        // FETCH
+
+        // COMPROBAR LISTA
+
+        function estadoLista() {
+                fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
+                method:'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                },   
+            })
+            .then((response)=>response.json())
+            .then((data)=>console.log(data))
+            .catch((error)=>console.log(error))
+
+         };
 
         // NUEVO USUARIO    
 
         function crearUsuario() {
-            fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
-            method:'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify([])
-                        
-        })
-        .then((response)=>response.json())
-        .then((data)=>console.log(data))
-        .catch((error)=>console.log(error))
+                fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
+                method:'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify([])
+                            
+            })
+            .then((response)=>response.json())
+            .then((data)=>console.log(data))
+            .catch((error)=>console.log(error))
 
-    }
+        };
 
         // ACTUALIZAR LISTA
+// console.log(lista);
+// const newToDo = (tarea) => {
 
+//     return (
+//         {label:tarea, done: false}
+//     )
+// };
         function  actualizarLista(tarea) {
-            const newToDo = { label: tarea, done: false}
-            fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
-            method:'PUT',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(
+                
+                    fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
+                    method:'PUT',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(
+                        [
+                            { label: "tarea", done: false },
+                        ]
+                    )
+                .then((response)=>response.json())
+                .then((data)=>console.log(data))
+                .catch((error)=>console.log(error))
 
-                [newToDo]
-            )
-        .then((response)=>response.json())
-        .then((data)=>console.log(data))
-        .catch((error)=>console.log(error))
-
-    })
-}
+            })
+        };
 
 
     // FETCH
@@ -124,6 +145,7 @@ const Todo = () => {
 
             <button className="btn btn-primary" onClick={crearUsuario}>Nuevo Usuario</button>
             {/* <button className="btn btn-success" onClick={actualizarLista}>Actualizar Lista</button> */}
+            <button className="btn btn-warning" onClick={estadoLista}>Comprobar Lista</button>
         
         </div>
     )

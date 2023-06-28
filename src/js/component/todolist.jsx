@@ -7,8 +7,51 @@ const Todo = () => {
 
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
-
     
+
+
+    // FETCH
+
+        // NUEVO USUARIO    
+
+        function crearUsuario() {
+            fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
+            method:'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify([])
+                        
+        })
+        .then((response)=>response.json())
+        .then((data)=>console.log(data))
+        .catch((error)=>console.log(error))
+
+    }
+
+        // ACTUALIZAR LISTA
+
+        function  actualizarLista(tarea) {
+            const newToDo = { label: tarea, done: false}
+            fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
+            method:'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+
+                newToDo
+            )
+        .then((response)=>response.json())
+        .then((data)=>console.log(data))
+        .catch((error)=>console.log(error))
+
+    })
+}
+
+
+    // FETCH
+
 
 
 
@@ -77,6 +120,9 @@ const Todo = () => {
                 </ul>
 
             </div>
+
+            <button className="btn btn-primary" onClick={crearUsuario}>Nuevo Usuario</button>
+            <button className="btn btn-success" onClick={actualizarLista}>Actualizar Lista</button>
         
         </div>
     )

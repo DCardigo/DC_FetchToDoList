@@ -40,7 +40,7 @@ const Todo = () => {
             },
             body: JSON.stringify(
 
-                newToDo
+                [newToDo]
             )
         .then((response)=>response.json())
         .then((data)=>console.log(data))
@@ -69,6 +69,7 @@ const Todo = () => {
 
     const handleLista = (e) => {
         setLista([...lista, tarea]);
+        actualizarLista()
      
       };
 
@@ -122,7 +123,7 @@ const Todo = () => {
             </div>
 
             <button className="btn btn-primary" onClick={crearUsuario}>Nuevo Usuario</button>
-            <button className="btn btn-success" onClick={actualizarLista}>Actualizar Lista</button>
+            {/* <button className="btn btn-success" onClick={actualizarLista}>Actualizar Lista</button> */}
         
         </div>
     )

@@ -1,9 +1,14 @@
-import React, {useState} from "react";
+
+import React, {useState, useEffect} from "react";
 
 
 const Todo = () => {
 
-    
+    // useEffect (() => {
+       
+    //     actualizarLista();
+    //  }, [])
+  
 
     // ESTADOS
 
@@ -46,17 +51,35 @@ const Todo = () => {
         };
 
 
-// console.log(lista);
+
 // console.log(tarea);
+
         // ELIMINAR TAREAS
+
+        let eliminacion = () => {
+            fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
+            method:'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify([])
+        })
+
+        .then((response)=>response.json())
+        .then((data)=>console.log(data))
+        .catch((error)=>console.log(error))
+        crearUsuario();
+        };
+
 
         const eliminarTareas = () => {
             setLista([]);
-            actualizarLista();
-        }
+            eliminacion();
+        
+        };
+       
 
-
-         // ACTUALIZAR LISTA
+        //  // ACTUALIZAR LISTA
 
         function  actualizarLista() {
 
@@ -88,19 +111,15 @@ const Todo = () => {
 
     const handleKey= (e) => {
         if (e.key === 'Enter' && tarea != " " && tarea != "") {
-            handleLista()
+            
+            setLista([...lista, tarea]);
             setTarea("")
         }
+        
       };
 
-
-    //   FUNCION LISTA
-
-    const handleLista = (e) => {
-        setLista([...lista, tarea]);
-      };
-
-    actualizarLista();
+     actualizarLista();
+   
 
     //   ELIMINAR ELEMENTO
 
@@ -108,9 +127,9 @@ const Todo = () => {
         const updatedItems = lista.filter((item) => item != tarea);
         setLista(updatedItems);
         
-
       };
 
+    
 
     // NUEVO ELEMENTO LISTA
 
@@ -124,10 +143,6 @@ const Todo = () => {
             <button  type="button" onClick={() => removeItem(tarea,i)} className="btn float-end px-2 py-0" aria-label="Close">x</button>
 
             </li>)})
-
-
-
-
 
 
     return (

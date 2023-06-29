@@ -4,16 +4,12 @@ import React, {useState, useEffect} from "react";
 
 const Todo = () => {
 
-    // useEffect (() => {
-       
-    //     actualizarLista();
-    //  }, [])
-  
-
+        
     // ESTADOS
 
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
+
 
 
         // FETCH
@@ -52,32 +48,27 @@ const Todo = () => {
 
 
 
-// console.log(tarea);
-
         // ELIMINAR TAREAS
-
-        let eliminacion = () => {
-            fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
-            method:'DELETE',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify([])
-        })
-
-        .then((response)=>response.json())
-        .then((data)=>console.log(data))
-        .catch((error)=>console.log(error))
-        crearUsuario();
-        };
-
 
         const eliminarTareas = () => {
             setLista([]);
-            eliminacion();
-        
+            fetch('https://assets.breatheco.de/apis/fake/todos/user/Dcardigo',{
+                method:'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    [{
+                        label: "sample task",
+                        done: false
+                    }]
+                )
+            })
+
+            .then((response)=>response.json())
+            .then((data)=>console.log(data))
+            .catch((error)=>console.log(error))
         };
-       
 
         //  // ACTUALIZAR LISTA
 
@@ -115,11 +106,9 @@ const Todo = () => {
             setLista([...lista, tarea]);
             setTarea("")
         }
-        
+   
       };
 
-     actualizarLista();
-   
 
     //   ELIMINAR ELEMENTO
 
@@ -129,7 +118,9 @@ const Todo = () => {
         
       };
 
-    
+     actualizarLista(); 
+     /* --> ESTO PROVOCA QUE EN LA CONSOLA SE REVISE CONSTANTEMENTE EL ESTADO DE LA LISTA, NO SÉ
+     SI ES MUY NEGATIVO O SI VALE. NO TENGO CLARO DÓNDE COLOCARLO.*/
 
     // NUEVO ELEMENTO LISTA
 

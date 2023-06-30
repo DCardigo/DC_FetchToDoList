@@ -10,11 +10,7 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
-/* ul{
 
-    margin-left: 573px;
-    margin-top: 44px;
-} */
 
 body {
     background-color: rgb(245, 244, 238);
@@ -25,20 +21,48 @@ body {
     color: rgb(255, 255, 255);
     font-size: 20px;
     padding-left: 10px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
 }
 
 li:hover .btn{
-    color: black;
+    color:  rgb(156, 128, 128);
 
     
 }
 
 .list-group-item{
     color: rgb(109, 109, 109);
+    font-size: 30px;
+    height: 60px;
+    padding-left: 4.5rem !important;
+    font-family: Helvetica, sans-serif;
+
 }
 
 #aviso{
 
     color: rgb(204, 203, 194);
     font-size: 12px;
+    height: 34px;
+    padding-left: 1.5rem !important;
+    
+}
+
+
+h1{
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 115px;
+    opacity: 50%;
+    color: rgb(156, 128, 128);
+}
+
+input{
+    font-family: Helvetica, sans-serif;
+    height: 60px;
+    font-size: 30px;
+    padding-left: 4.5rem;
+    color: rgb(109, 109, 109);
+
 }

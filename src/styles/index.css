@@ -75,4 +75,15 @@ h1{
 
 #input:focus {
     outline: none;
+   
+}
+
+
+#close{
+    font-family: 'Lato', sans-serif;
+    
+}
+
+#close:focus {
+    border-color: rgb(255, 255, 255);
   }

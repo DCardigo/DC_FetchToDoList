@@ -131,7 +131,7 @@ const Todo = () => {
 
                 {tarea.label}
 
-                <button  type="button" onClick={() => removeItem(tarea,i)} className="btn float-end px-3 pt-2" aria-label="Close">X</button>
+                <button id="close" type="button" onClick={() => removeItem(tarea,i)} className="btn float-end px-3 pt-2" aria-label="Close">X</button>
 
                 </li>)})
 

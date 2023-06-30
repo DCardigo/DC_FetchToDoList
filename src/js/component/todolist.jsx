@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from "react";
 
 
@@ -10,7 +9,7 @@ const Todo = () => {
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
     const [usuario,setUsuario] = useState("Dcardigo");
-    const [contador,setContador] = useState("")
+    const [contador,setContador] = useState("");
 
         // ---------------------------------------
 
@@ -72,6 +71,7 @@ const Todo = () => {
                 if (response.ok === true){
                     crearUsuario()
                     setLista([])
+                    setContador()
                 }
                 
                 return response.json()
@@ -119,9 +119,9 @@ const Todo = () => {
         const removeItem = (tarea,i) => {
             const updatedItems = lista.filter((item) => item != tarea);
             setLista(updatedItems);
-            if (lista.length <= 1){eliminarTareas()}
+            
         };
-
+console.log(lista.length);
         // NUEVO ELEMENTO LISTA
 
         const newList = lista.map(function(tarea,i){
@@ -139,12 +139,13 @@ const Todo = () => {
         // FUNCION CONTADOR ITEM LEFT       
 
         function itemLeft() {
-            
-            if (lista.length > 0){
-                setContador(<li id ="aviso"className="list-group-item">{lista.length === 0 ? " " : lista.length + " item left"
-                }</li>)}
-        };
 
+            if (lista.length === 0){eliminarTareas()}
+            if (lista.length > 0){
+                setContador(<li id ="aviso"className="list-group-item">{lista.length + " item left"
+                }</li>)}
+            
+        };
 
         // DOM
 
@@ -209,4 +210,3 @@ const Todo = () => {
 
 
 export default Todo
-

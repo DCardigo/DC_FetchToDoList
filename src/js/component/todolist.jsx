@@ -121,7 +121,7 @@ const Todo = () => {
             setLista(updatedItems);
             
         };
-console.log(lista.length);
+
         // NUEVO ELEMENTO LISTA
 
         const newList = lista.map(function(tarea,i){
@@ -181,7 +181,7 @@ console.log(lista.length);
 
                 <ul className="list-group d-flex col-6 shadow-lg mb-3 bg-body rounded">
 
-                    <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>
+                    <input id="input" type="text"  value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>
                     
                     {/* ELEMENTO LISTA */}
                     {newList}

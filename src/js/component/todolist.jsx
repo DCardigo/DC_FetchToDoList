@@ -10,10 +10,11 @@ const Todo = () => {
     const [tarea,setTarea] = useState("");
     const [lista,setLista] = useState([]);
     const [usuario,setUsuario] = useState("Dcardigo");
+    const [contador,setContador] = useState("")
 
+        // ---------------------------------------
 
-
-        // FETCH
+        // FETCH API
 
         // COMPROBAR LISTA
 
@@ -55,10 +56,10 @@ const Todo = () => {
 
         };
 
-        // ELIMINAR TAREAS
+        // ELIMINAR TODAS LAS TAREAS
 
         const eliminarTareas = () => {
-            // ;
+            
             fetch(`https://assets.breatheco.de/apis/fake/todos/user/${usuario}`,{
                 method:'DELETE',
                 headers: {
@@ -96,8 +97,11 @@ const Todo = () => {
                 .catch((error)=>console.log(error))
         };
 
-        // FETCH
+        // FETCH API
 
+        // -------------------------------------------
+
+        // DOM
 
         // FUNCIÓN KEYDOWN
 
@@ -110,12 +114,11 @@ const Todo = () => {
         };
 
 
-        //   ELIMINAR ELEMENTO
+        //   ELIMINAR ELEMENTO (X)
 
         const removeItem = (tarea,i) => {
             const updatedItems = lista.filter((item) => item != tarea);
             setLista(updatedItems);
-
             if (lista.length <= 1){eliminarTareas()}
         };
 
@@ -132,11 +135,30 @@ const Todo = () => {
 
                 </li>)})
 
-console.log(lista.length);        
+
+        // FUNCION CONTADOR ITEM LEFT       
+
+        function itemLeft() {
+            
+            if (lista.length > 0){
+                setContador(<li id ="aviso"className="list-group-item">{lista.length === 0 ? " " : lista.length + " item left"
+                }</li>)}
+        };
+
+
+        // DOM
+
+        // -------------------------------
+
+        // useEFFECT
 
         useEffect (() => {
-                    actualizarLista()
-                }, [lista])
+            actualizarLista()
+        }, [lista])
+
+        useEffect (() => {
+            itemLeft()
+        }, [lista])
 
             
     return (
@@ -144,6 +166,8 @@ console.log(lista.length);
         <div className="justify-content-center">
 
             <h1 className="text-center mt-3">todos</h1>
+
+            {/* BOTON NUEVO USUARIO */}
 
             {/* <div className="d-flex justify-content-center m-5">
 
@@ -157,19 +181,13 @@ console.log(lista.length);
                 <ul className="list-group d-flex col-6 shadow-lg mb-3 bg-body rounded">
 
                     <input type="text" value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>
-
+                    
+                    {/* ELEMENTO LISTA */}
                     {newList}
 
-                    <li id ="aviso"className="list-group-item" style ={{display: 'none'}}>{
+                    {/* ITEM LEFT  */}
+                    {contador}  
 
-                        lista.length === 0 ? "" :
-                        lista.length === 1 ?  lista.length + " tarea pendiente." :
-                        lista.length + " tareas pendientes."}
-
-
-                    </li>
-
-                    
                 </ul>
 
             </div>
@@ -177,6 +195,8 @@ console.log(lista.length);
             <div className="d-flex justify-content-center">
                 
                 <button className="btn btn-success" onClick={eliminarTareas}>Borrar Tareas</button>
+
+                {/* BTN COMPROBAR LISTA API */}
                 {/* <button className="btn btn-warning mx-4" onClick={estadoLista}>Comprobar Lista</button> */}
 
             </div>

@@ -119,9 +119,11 @@ const Todo = () => {
         const removeItem = (tarea,i) => {
             const updatedItems = lista.filter((item) => item != tarea);
             setLista(updatedItems);
+            if (lista.length === 0){eliminarTareas()}
+        
             
         };
-
+console.log(lista.length);
         // NUEVO ELEMENTO LISTA
 
         const newList = lista.map(function(tarea,i){
@@ -177,21 +179,29 @@ const Todo = () => {
 
             </div> */}
 
-            <div className="d-flex justify-content-center">
+            <div  className="d-inline">
+                <div className="d-flex justify-content-center">
 
-                <ul className="list-group d-flex col-6 shadow-lg mb-3 bg-body rounded">
+                    <ul className="list-group d-flex col-6 shadow-sm bg-body " id="box1">
 
-                    <input id="input" type="text"  value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>
-                    
-                    {/* ELEMENTO LISTA */}
-                    {newList}
+                        <input id="input" type="text"  value = {tarea} onChange={(e) => setTarea(e.target.value)} onKeyDown={handleKey} placeholder={lista.length === 0 ? "No hay tareas, añadir tareas" : ""}/>
+                        
+                        {/* ELEMENTO LISTA */}
+                        {newList}
 
-                    {/* ITEM LEFT  */}
-                    {contador}  
+                        {/* ITEM LEFT  */}
+                        {contador}  
 
-                </ul>
+                    </ul>
+
+                </div>
+                <div id="prueba" className="shadow bg-body"> </div>
+                <div id="prueba2" className="shadow bg-body mb-5"> </div>
 
             </div>
+
+            
+            
 
             <div className="d-flex justify-content-center">
                 
@@ -201,6 +211,8 @@ const Todo = () => {
                 {/* <button className="btn btn-warning mx-4" onClick={estadoLista}>Comprobar Lista</button> */}
 
             </div>
+
+            
 
         </div>
     )

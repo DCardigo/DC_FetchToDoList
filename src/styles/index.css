@@ -92,7 +92,7 @@ h1{
   #prueba{
     background-color: white;
     height: 5px;
-    width: 710px;
+    width: 49%;
     margin: auto;
     margin-bottom:1px;
 
@@ -101,9 +101,8 @@ h1{
   #prueba2{
     background-color: white;
     height: 4px;
-    width: 698px;
+    width: 48%;
     margin: auto;
-
   }
 
  

@@ -120,10 +120,17 @@ const Todo = () => {
             const updatedItems = lista.filter((item) => item != tarea);
             setLista(updatedItems);
             if (lista.length === 0){eliminarTareas()}
-        
-            
         };
+
+        // BORRAR TAREAS (BOTON)
+
+        const borrarTareas = () => {
+            setLista([])
+            setContador()
+        };
+
 console.log(lista.length);
+
         // NUEVO ELEMENTO LISTA
 
         const newList = lista.map(function(tarea,i){
@@ -205,7 +212,7 @@ console.log(lista.length);
 
             <div className="d-flex justify-content-center">
                 
-                <button className="btn btn-success" onClick={eliminarTareas}>Borrar Tareas</button>
+                <button className="btn btn-success" onClick={borrarTareas}>Borrar Tareas</button>
 
                 {/* BTN COMPROBAR LISTA API */}
                 {/* <button className="btn btn-warning mx-4" onClick={estadoLista}>Comprobar Lista</button> */}

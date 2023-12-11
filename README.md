@@ -1,5 +1,5 @@
 
-![Captura de pantalla 2023-06-26 a las 18 00 49](https://github.com/DCardigo/DC_toDoList/assets/123099651/627212fa-5094-4903-967b-87b55458e3b8)
+![Firefox_Screenshot_2023-12-11T11-19-39 667Z](https://github.com/DCardigo/DC_FetchToDoList/assets/123099651/888c56b8-9693-413b-89ca-d225fb0ff1e1)
 
 Deploy: https://dc-fetch-to-do-list.vercel.app/
 
